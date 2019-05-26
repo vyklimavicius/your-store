@@ -32,3 +32,8 @@ class CartsController < ApplicationController
   end
 
 end
+
+
+
+# user = User.find_by(id: request.headers["Authorization"])
+# UserSerializer.new()

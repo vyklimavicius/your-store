@@ -1,29 +1,17 @@
 import React from 'react';
-import { Button, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 
+const  ItemCard = (props) => {
 
-const ItemCard = (props) => {
-
-
-  // const handleBuyClick = () => {
-  //   props.handleBuy(props.item);
-  // }
-
-  // const handleRemove = () => {
-  //   props.handleRemove(props.item);
-  // }
-
-
-  return (
-
-    <div className="Item">
-    <h2>{props.item.name}</h2>
-    <Image src={props.item.image} roundedCircle />
-    <h3>{props.item.description}</h3>
-    <h4>Price:${props.item.price}</h4>
-    {props.item.clicked ? <Button variant="primary" size="sm" value={props.item.id} onClick={() => props.handleRemove(props.item)}>Remove</Button> : <Button variant="primary" size="sm" value={props.item.id} onClick={() => props.handleBuy(props.item)}>Buy</Button>}
-    </div>
-  )
+        
+    
+        return (
+            <div className="card-Item" onClick={() => props.handleClick(props.item)}>
+             <h1 style={{fontSize:'20px'}}>{props.item.name}</h1>
+             <Image src={props.item.image} alt={props.item.name} roundedCircle />
+            </div>
+        );
 }
+
 
 export default ItemCard;

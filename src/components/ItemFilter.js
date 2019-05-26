@@ -1,5 +1,5 @@
 import React from 'react';
-import InputGroup from 'react-bootstrap/InputGroup';
+// import InputGroup from 'react-bootstrap/InputGroup';
 
 
 const ItemFilter = (props) => {
@@ -7,30 +7,30 @@ const ItemFilter = (props) => {
   // Inline styling
 
   let h1 = {
-    marginTop: '200px',
-    marginLeft: '10px'
+    width: '258px',
+    height: '100px',
+    // borderLeft: '2px solid black',
+    borderRight: '1px solid black',
+    // borderBottom: '2px solid black',
+    borderTop: '1px solid black',
+    textAlign: 'center',
+    fontFamilyStyle : 'Oswald',
+    color: 'dark-grey',
+    fontSize: '25px'
   }
 
-  let img = {
-    width: '30px'
-  }
+  // let img = {
+  //   width: '30px'
+  // }
 
   // Functions
-
-  // const takeFilter = (e) => {
-  //   let word = e.target.value;
-  //   props.handleFilter(word);
-  // }
 
   return (
 
     <div>
-    <input style={h1} type="text" placeholder="Filter by name" onChange={ (e) => props.handleFilter(e.target.value) }></input>
-    <img style={img} src={'http://localhost:3000/searchIcon.jpg'} />
+      <input style={h1} type="text" placeholder="SEARCH" onChange={ (e) => props.handleFilter(e.target.value) }></input>
     </div>
-
   )
-
 }
 
 export default ItemFilter;

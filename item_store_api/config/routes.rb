@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :items, only: [:index]
   end
-
+  # post "", to "autho# "
+  # get "", to autho# "
   resources :users, only: [:index, :create, :destroy]
   resources :carts, only: [:index, :create, :destroy]
 

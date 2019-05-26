@@ -55,13 +55,10 @@ class Users extends React.Component {
 
 
   handleChange = (e) => {
-    // let newUser = e.target.value;
+    
     this.setState({
       [e.target.name] : e.target.value
-      // newUser: newUser
     })
-    console.log(this.state.newUser);
-    console.log(this.state.test);
   }
 
   handleClick = (e) => {
