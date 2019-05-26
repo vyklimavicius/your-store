@@ -1,9 +1,9 @@
 import React from 'react';
 import ItemList from './ItemList';
 import ItemCart from './ItemCart';
-import ItemFilter from './ItemFilter';
 import NavBar from './NavBar';
 import ItemDetail from './ItemDetail';
+import ItemSearch from './ItemSearch';
 
 
 class Home extends React.Component {
@@ -14,9 +14,11 @@ class Home extends React.Component {
         itemsFilter:[],
         clicked: false,
         clickedObj: null,
-      }
+        credit: 100,
+        total: 0,
+    }
     
-      componentDidMount() {
+    componentDidMount() {
         fetch('http://localhost:3000/v1/items')
         .then( response => response.json())
         .then( items => {
@@ -40,17 +42,30 @@ class Home extends React.Component {
           clickedObj: obj
         })
       }
+
+      handleBuy = (item) => {
+        let price = item.price;
+        this.setState({
+          itemsBought: [...this.state.itemsBought, {...item}],
+          credit: this.state.credit - price,
+          total: this.state.total + price
+        })
+      }
+      
     
       handleRemove = (item) => {
+        let price = item.price;
         let newArray = [...this.state.itemsBought];
         let idx = newArray.indexOf(item);
         newArray.splice(idx,1)
         this.setState({
-         itemsBought: newArray
+         itemsBought: newArray,
+         credit: this.state.credit + price,
+         total: this.state.total - price
         })
       }
     
-      handleFilter = (word) => {
+      handleSearch = (word) => {
     
         const newArray = [...this.state.items].filter( item => {
           return item.name.toLowerCase().includes(word) || item.name.includes(word)
@@ -60,21 +75,38 @@ class Home extends React.Component {
         })
       }
 
+      handleFilter = (word) => {
+        if (word === "All") {
+          this.setState( prevState => ({
+            itemsFilter: prevState.items
+          }))
+        } else {
+          let newArray = [...this.state.items].filter(item => {
+            return item.category.includes(word)
+          })
+          this.setState({
+            itemsFilter: newArray
+          })
+        }
+      }
+
     render(){
+      // console.log(this.state.itemsBought);  
+      
     return (
     <div className="Body">
-      <NavBar />
+      <NavBar credit={this.state.credit} handleFilter={this.handleFilter}/>
      <div className="Shelf">
        <img src="http://localhost:3000/storeShelf.png" alt="Store-shelf"/>
      </div>
      <ItemList items={this.state.itemsFilter} handleClick={this.handleItemClick}/>
      <div className="Item-filter">
-     <ItemFilter handleFilter={this.handleFilter}/>
+     <ItemSearch handleSearch={this.handleSearch}/>
      </div>
      <div className="Item-cart">
-       <ItemCart items={this.state.itemsBought} />
+       <ItemCart items={this.state.itemsBought} total={this.state.total} handleClick={this.handleRemove}/>
      </div>
-     {this.state.clicked ? <ItemDetail item={this.state.clickedObj}/> : null}
+     {this.state.clicked ? <ItemDetail item={this.state.clickedObj} handleBuy={this.handleBuy}/> : null}
     </div>
     )};
 };

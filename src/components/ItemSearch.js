@@ -2,7 +2,7 @@ import React from 'react';
 // import InputGroup from 'react-bootstrap/InputGroup';
 
 
-const ItemFilter = (props) => {
+const ItemSearch = (props) => {
 
   // Inline styling
 
@@ -28,9 +28,9 @@ const ItemFilter = (props) => {
   return (
 
     <div>
-      <input style={h1} type="text" placeholder="SEARCH" onChange={ (e) => props.handleFilter(e.target.value) }></input>
+      <input style={h1} type="text" placeholder="SEARCH" onChange={ (e) => props.handleSearch(e.target.value) }></input>
     </div>
   )
 }
 
-export default ItemFilter;
+export default ItemSearch;

@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 2019_05_02_194644) do
     t.text "description"
     t.integer "price"
     t.text "image"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    # t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

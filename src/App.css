@@ -30,7 +30,7 @@
   text-align: center;
   margin-left: -200px;
   width: 240px;
-  height: 480px;
+  height: 465px;
   /* height: 50vh; */
   margin-top: 200px;
   display: block;
@@ -43,10 +43,31 @@
 }
 
 
+.cart-Div {
+  display: flex;
+  margin-left: 5px;
+  margin-right: 2px;
+
+}
+
+.total {
+  border-top: 0px solid black;
+  border-right: 3px solid black;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+
+  margin-left: 1000px;
+  width: 130px;
+  height: 150px;
+  padding-top: 25px;
+  text-align: center;
+  position: fixed;
+}
+
 
 
 .Item-filter {
- margin-top: 680px;
+ margin-top: 665px;
  margin-left: -260px;
  border: 1px ridge black;
  width: 260px;
@@ -54,24 +75,18 @@
 }
 
 .Item-cart {
-  /* float: right; */
   width: 1200px;
-  height: 0px;
-  float: right;
-  flex-direction: row;
-  margin-top: 679px;
+  /* flex-direction: row; */
+  margin-top: 615px;
   margin-left: 0px;
+  display: flex;
   /* border-bottom:3px solid black;
   border-left: 1px solid black; */
   border-top: 3px ridge black;
+  border-bottom: 3px ridge black;
   /* border-right: 3px solid black; */
 }
 
-.card-Item:hover {
-        -webkit-transform: scale(1.0);
-        -moz-transform: scale(1.0);
-        transform: scale(1.0);
-}
 
 .App-link {
   color: #61dafb;

@@ -1,17 +1,23 @@
 import React from 'react';
-import ItemDetail from './ItemDetail'
+import ItemCard from './ItemCard';
 
 class ItemCart extends React.Component {
+
+  
 
   render() {
     return (
       <div className="cart-Div">
-      <img src="http://localhost:3000/cart.png" alt="cart" style={{width:'100px', position: 'relative', left: '700px', top: '20px'}} />
+      {/* <img src="http://localhost:3000/cart.png" alt="cart" style={{width:'100px', position: 'relative', left: '700px', top: '20px'}} /> */}
       {this.props.items.map(item => {
         return(
-        <ItemDetail item={item} handleRemove={this.props.handleRemove}/>
+        <ItemCard item={item} handleClick={this.props.handleClick}/>
       )
       })}
+      <div className="total">
+      <h1>TOTAL</h1>
+      <h2>${this.props.total}</h2>
+      </div>
       </div>
     )
   }

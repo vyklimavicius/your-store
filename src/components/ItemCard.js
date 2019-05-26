@@ -6,7 +6,7 @@ const  ItemCard = (props) => {
         
     
         return (
-            <div className="card-Item" onClick={() => props.handleClick(props.item)}>
+            <div onClick={() => props.handleClick(props.item)}>
              <h1 style={{fontSize:'20px'}}>{props.item.name}</h1>
              <Image src={props.item.image} alt={props.item.name} roundedCircle />
             </div>
