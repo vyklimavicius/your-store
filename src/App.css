@@ -4,9 +4,17 @@
   display: flex;
 }
 
+.User-body {
+  background-image: url("http://localhost:3000/market.jpg");
+  background-size: cover;
+  width: 1400px;
+  height: 1000px;
+  position: fixed;
+}
+
 .Shelf {
-  margin-left: -1300px;
-  margin-top: 130px;
+  margin-left: -1350px;
+  margin-top: 145px;
   z-index: -3;
 }
 
@@ -17,19 +25,23 @@
   pointer-events: none;
 }
 
-.User-form {
+#user-form {
+  background-color: #ffffff;
+  margin-top: 100px;
+  padding: 70px;
+  width: 500px;
   font-size: 28px;
-  margin-left: 10px;
+  margin-left: 450px;
   color: black;
-  position: absolute;
-  top: 0;
+  border: 3px solid black;
+  box-shadow: 10px 10px black;
 }
 
 .Item-list {
   overflow: scroll;
   text-align: center;
-  margin-left: -200px;
-  width: 240px;
+  margin-left: -165px;
+  width: 220px;
   height: 465px;
   /* height: 50vh; */
   margin-top: 200px;
@@ -56,7 +68,7 @@
   border-left: 3px solid black;
   border-bottom: 3px solid black;
 
-  margin-left: 1000px;
+  margin-left: 1034px;
   width: 130px;
   height: 150px;
   padding-top: 25px;
@@ -140,6 +152,27 @@ img {
     font-size: 25px;
 }  */
 
+.footer {
+  border: 5px solid black;
+  margin-top: 155px;
+  background-color: black;
+  height: 40px;
+  width: 1400px;
+  color: white;
+  text-align: center;
+  position: fixed;
+}
+
+.Signup-footer {
+  border: 5px solid black;
+  margin-top: 46px;
+  background-color: black;
+  height: 40px;
+  width: 1400px;
+  color: white;
+  text-align: center;
+  position: fixed;
+}
 
 @keyframes App-logo-spin {
   from {

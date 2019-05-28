@@ -4,6 +4,7 @@ import ItemCart from './ItemCart';
 import NavBar from './NavBar';
 import ItemDetail from './ItemDetail';
 import ItemSearch from './ItemSearch';
+import UserForm from './UserForm';
 
 
 class Home extends React.Component {
@@ -16,6 +17,7 @@ class Home extends React.Component {
         clickedObj: null,
         credit: 100,
         total: 0,
+        currentUser: JSON.parse(localStorage.getItem('user'))
     }
     
     componentDidMount() {
@@ -90,25 +92,30 @@ class Home extends React.Component {
         }
       }
 
-    render(){
-      // console.log(this.state.itemsBought);  
-      
-    return (
-    <div className="Body">
-      <NavBar credit={this.state.credit} handleFilter={this.handleFilter}/>
-     <div className="Shelf">
-       <img src="http://localhost:3000/storeShelf.png" alt="Store-shelf"/>
-     </div>
-     <ItemList items={this.state.itemsFilter} handleClick={this.handleItemClick}/>
-     <div className="Item-filter">
-     <ItemSearch handleSearch={this.handleSearch}/>
-     </div>
-     <div className="Item-cart">
-       <ItemCart items={this.state.itemsBought} total={this.state.total} handleClick={this.handleRemove}/>
-     </div>
-     {this.state.clicked ? <ItemDetail item={this.state.clickedObj} handleBuy={this.handleBuy}/> : null}
-    </div>
-    )};
+  render() {
+    if (this.state.currentUser){
+      return (
+        <div className="Body">
+          <NavBar credit={this.state.credit} handleFilter={this.handleFilter} currentUser={this.state.currentUser} />
+          <div className="Shelf">
+            <img src="http://localhost:3000/storeShelf.png" alt="Store-shelf" />
+          </div>
+          <ItemList items={this.state.itemsFilter} handleClick={this.handleItemClick} />
+          <div className="Item-filter">
+            <ItemSearch handleSearch={this.handleSearch} />
+          </div>
+          <div className="Item-cart">
+            <ItemCart items={this.state.itemsBought} total={this.state.total} handleClick={this.handleRemove} />
+          </div>
+          {this.state.clicked ? <ItemDetail item={this.state.clickedObj} handleBuy={this.handleBuy} /> : null}
+        </div>
+      )
+    } else {
+      return(
+        <UserForm history={this.history}/>
+      )
+    }
+  };
 };
 
 export default Home;

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index]
   end
   # post "", to "autho# "
-  # get "", to autho# "
+  post '/login', to: "autho#login"
   resources :users, only: [:index, :create, :destroy]
   resources :carts, only: [:index, :create, :destroy]
 

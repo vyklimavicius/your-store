@@ -14,6 +14,17 @@ class UsersController < ApplicationController
     render json: @user, status: :created
   end
 
+  # def login
+  #   # binding.pry
+  #   @user = User.find_by(params[:username])
+  #   if @user.password == params[:password]
+  #    render json: @user, status: :ok
+  #    else
+  #    render status: :not_found
+  #   end
+  # end
+
+
   def destroy
 
     @user = User.find(params[:id])
@@ -29,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:username, :email, :password, :image)
   end
 
 end

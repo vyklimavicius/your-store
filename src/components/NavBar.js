@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar, Nav, NavDropdown, Badge } from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Badge, Image } from 'react-bootstrap';
 
 
 class NavBar extends React.Component {
@@ -14,15 +14,36 @@ class NavBar extends React.Component {
       }, () => this.props.handleFilter(this.state.filter))
     }
 
+    handleLogout = () => {
+      localStorage.clear('user')
+    }
+
     render() {
-        return (
-            <div className="Nav-bar">
-            <Navbar bg="dark" variant="dark" expand="lg">
-            <img src="http://localhost:3000/buyMe.png" alt="Logo" />
+
+    let profile = {
+     paddingTop: '-60px',
+     marginBottom: '20px',
+     marginLeft: '10px',
+     border: '2px solid black',
+     width: '100px',
+     height: '100px'
+    }
+
+    const currentUser = this.props.currentUser.username;
+    const image = this.props.currentUser.image;
+
+    console.log(this.state.currentUser);
+    
+    
+    return (
+      <div className="Nav-bar">
+      <Navbar bg="dark" variant="dark" expand="lg">
+      <img src="http://localhost:3000/buyMe.png" alt="Logo" />
+      <Image style={profile} src={image} roundedCircle/>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link style={{ fontSize: '25px' }} href="#home">User</Nav.Link>
+      <Nav.Link style={{ fontSize: '25px' }} href="/" onClick={this.handleLogout}>{currentUser}</Nav.Link>
       <Nav.Link style={{fontSize:'25px'}} href="#link">Cart</Nav.Link>
       <NavDropdown onSelect={this.handleChange} style={{fontSize:'25px'}} title="Filter" id="basic-nav-dropdown">
         <NavDropdown.Item eventKey="All">All</NavDropdown.Item>
