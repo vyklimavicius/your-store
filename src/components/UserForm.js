@@ -70,7 +70,7 @@ class UserForm extends React.Component {
     <Button style={{marginLeft: '30px', backgroundColor: 'gray', width: '300px', border: '1px solid black'}} variant="primary" type="submit" onClick={null} >Submit</Button>
     <br></br>
     <br></br>
-    <a style={{marginLeft: '80px', color: 'black'}} href="/signup">Already sign up?</a>
+    <a style={{marginLeft: '90px', color: 'black'}} href="/signup">Not a member?</a>
     </Form>
     <div className="footer">
         <h4>©Copyright 2019</h4>

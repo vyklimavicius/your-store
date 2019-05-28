@@ -14,8 +14,17 @@ class NavBar extends React.Component {
       }, () => this.props.handleFilter(this.state.filter))
     }
 
-    handleLogout = () => {
-      localStorage.clear('user')
+    handleLogout = (e) => {
+      // console.log(e);
+      if (e === "Logout"){
+        console.log("pass");
+        localStorage.clear('user');
+        window.location.href = '/';
+      }
+
+      // localStorage.clear('user');
+      // window.location.href = '/';
+      
     }
 
     render() {
@@ -31,6 +40,7 @@ class NavBar extends React.Component {
 
     const currentUser = this.props.currentUser.username;
     const image = this.props.currentUser.image;
+    const email = this.props.currentUser.email;
 
     console.log(this.state.currentUser);
     
@@ -43,7 +53,13 @@ class NavBar extends React.Component {
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link style={{ fontSize: '25px' }} href="/" onClick={this.handleLogout}>{currentUser}</Nav.Link>
+      {/* <Nav.Link style={{ fontSize: '25px' }} href="/" onClick={this.handleLogout}>{currentUser}</Nav.Link> */}
+      {/*  */}
+        <NavDropdown onSelect={this.handleLogout} style={{ fontSize: '25px' }} title={currentUser} id="basic-nav-dropdown">
+        <NavDropdown.Item>Username: {currentUser}</NavDropdown.Item>
+        <NavDropdown.Item>Email: {email}</NavDropdown.Item>
+        <NavDropdown.Item eventKey="Logout">Logout</NavDropdown.Item>
+      </NavDropdown>
       <Nav.Link style={{fontSize:'25px'}} href="#link">Cart</Nav.Link>
       <NavDropdown onSelect={this.handleChange} style={{fontSize:'25px'}} title="Filter" id="basic-nav-dropdown">
         <NavDropdown.Item eventKey="All">All</NavDropdown.Item>
